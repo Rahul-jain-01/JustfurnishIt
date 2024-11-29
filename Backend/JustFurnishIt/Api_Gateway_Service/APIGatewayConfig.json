@@ -9,8 +9,8 @@
             // The downstream service host and port (Account_Service)
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost", // Host where the Account_Service is running
-                    "Port": 7001 // Port number for the Account_Service
+                    "Host": "account-service-dfdredawdtejhbav.centralindia-01.azurewebsites.net", // Host where the Account_Service is running
+                    "Port": 443 // Port number for the Account_Service
                 }
             ],
             // The gateway path template. Client calls will use this path through the gateway
@@ -25,8 +25,8 @@
             "DownstreamScheme": "https", // Secure communication
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 7005 // Port for the Design_Service
+                    "Host": "design-service.azurewebsites.net",
+                    "Port": 443 // Port for the Design_Service
                 }
             ],
             "UpstreamPathTemplate": "/gateway/design/{Everything}", // Gateway path for design-related requests
@@ -41,8 +41,8 @@
             "DownstreamScheme": "https", // Secure protocol
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 7003 // Port for the Booking_Service
+                    "Host": "booking-services-aqejftbtasf7cdeu.canadacentral-01.azurewebsites.net",
+                    "Port": 443 // Port for the Booking_Service
                 }
             ],
             "UpstreamPathTemplate": "/gateway/booking/{Everything}", // Gateway path for booking requests
@@ -105,8 +105,8 @@
             "DownstreamScheme": "https", // Secure protocol
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 7006 // Port for the Designer_Service
+                    "Host": "designer-service-dngmgud9eecrcnb5.canadacentral-01.azurewebsites.net",
+                    "Port": 443 // Port for the Designer_Service
                 }
             ],
             "UpstreamPathTemplate": "/gateway/designer/{Everything}", // Gateway path for designer-related actions
@@ -153,8 +153,8 @@
             "DownstreamScheme": "https", // Secure protocol
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 7002 // Port for the Otp_Service
+                    "Host": "otp-services.azurewebsites.net",
+                    "Port": 443 // Port for the Otp_Service
                 }
             ],
             "UpstreamPathTemplate": "/gateway/otp/{Everything}", // Gateway path for quotation-related requests

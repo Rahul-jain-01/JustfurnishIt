@@ -1,16 +1,17 @@
 import axios from 'axios';
 // import { Design } from '../Types/DesignTypes';
 import { DesignData, DesignDTO ,Design, DesignDataInfo } from "../Types/DesignTypes";
+const _url=import.meta.env.VITE_BASE_API_URL
 
 // Define the interface for the DesignDTO based on your DTO
-const WISHLIST_API_BASE_URL = 'https://localhost:7000/gateway/WishList';
+const WISHLIST_API_BASE_URL = `${_url}/WishList`;
 
-const DESIGN_API_BASE_URL = 'https://localhost:7000/gateway/Design';
+const DESIGN_API_BASE_URL = `${_url}/Design`;
 
 // Base URL of your backend API (Update this with your actual API URL)
-const API_BASE_URL = "https://localhost:7000/gateway/Design/AddDesigns";
+const API_BASE_URL = `${_url}/Design/AddDesigns`;
 
-export const API_BASE = "https://localhost:7000/gateway/Design"; // Change this URL as per your setup
+export const API_BASE = `${_url}/Design`; // Change this URL as per your setup
 // Axios instance with base configuration
 
 const token = localStorage.getItem('token');
@@ -99,7 +100,7 @@ export const addDesign = async (newDesign: DesignDTO): Promise<string> => {
 // Define the API request service
 export const deleteDesign = async (designId: number): Promise<any | void> => {
   try {
-    const response = await axios.delete(`https://localhost:7000/gateway/Design/${designId}`);
+    const response = await axios.delete(`${_url}/Design/${designId}`);
       return response;
   } catch (error) {
     console.error("Error deleting design:", error);
@@ -108,18 +109,18 @@ export const deleteDesign = async (designId: number): Promise<any | void> => {
 };
 
 export const getDesignById = async (designId: Number): Promise<DesignDataInfo> => {
-  const response = await axios.get<DesignDataInfo>(`https://localhost:7000/gateway/Design/${designId}`);
+  const response = await axios.get<DesignDataInfo>(`${_url}/Design/${designId}`);
   return response.data;
 };
 
 export const getDesignsByDesignerId = async (designerId: Number): Promise<any> => {
-  const response = await axios.get(`https://localhost:7000/gateway/Design/designer/${designerId}`);
+  const response = await axios.get(`${_url}/Design/designer/${designerId}`);
   return response.data;
 };
 
 export const UpdateDesign = async (designId:Number ,newDesign: any): Promise<string> => {
   try {
-    const response = await axios.put<string>(`https://localhost:7000/gateway/Design/updateDesign/${designId}`, newDesign); // Change the endpoint if necessary
+    const response = await axios.put<string>(`${_url}/Design/updateDesign/${designId}`, newDesign); // Change the endpoint if necessary
     return response.data; // Return success message
   } catch (error: any) {
     if (error.response) {

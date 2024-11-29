@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { ProfilePhotoDTO, UpdateProfilePayload, User } from '../Types/AuthTypes';
+const _url=import.meta.env.VITE_BASE_API_URL
 
 
 export const getUserById = async (id: number): Promise<User | null> => {
   try {
     // Fetch the user by id
-    const response = await axios.get<User>(`https://localhost:7000/gateway/Account/${id}`);
+    const response = await axios.get<User>(`${_url}/Account/${id}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching user:', error);
@@ -14,7 +15,7 @@ export const getUserById = async (id: number): Promise<User | null> => {
 };
 
 export const updateUserProfile = async (userId: number, payload: UpdateProfilePayload) => {
-  const url = `https://localhost:7000/gateway/Account/${userId}`;
+  const url = `${_url}/Account/${userId}`;
   try {
     const response = await axios.put(url, payload);
     return response.data;
@@ -29,7 +30,7 @@ export const uploadImage = async (file: File): Promise<string | null> => {
   formData.append('file', file); // Append the file to FormData
 
   try {
-      const response = await fetch('https://localhost:7000/gateway/Media/upload', {
+      const response = await fetch(`${_url}/Media/upload`, {
           method: 'POST',
           body: formData, // Send the formData containing the image file
       });
@@ -50,7 +51,7 @@ export const updateProfilePhoto = async (id:Number,profilePhotoDto: ProfilePhoto
   try {
     console.log(id);
     console.log(profilePhotoDto)
-      const response = await fetch(`https://localhost:7000/gateway/Account/updatephoto/${id}`, {
+      const response = await fetch(`${_url}/Account/updatephoto/${id}`, {
           method: 'PUT',
           headers: {
               'Content-Type': 'application/json',

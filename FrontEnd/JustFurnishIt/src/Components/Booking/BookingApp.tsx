@@ -10,6 +10,7 @@ import { RootState } from '../../Redux/Store/Store';
 import { useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import { getAvailableTimes, getDesignerName } from '../../Services/BookingService';
+const _url=import.meta.env.VITE_BASE_API_URL
 
 interface BookingDTO {
   customerId: number;
@@ -111,7 +112,7 @@ const BookingApp: React.FC=()=> {
 
     try {
       // Send the booking DTO to the backend
-      await axios.post<BookingDTO>('https://localhost:7000/gateway/booking', bookingDTO);
+      await axios.post<BookingDTO>(`${_url}/booking`, bookingDTO);
       toast.success(`Booking created successfully! and Email has been sent to ${customerEmail}`);
       navigate(-1); // Redirects back to the previous page
     } catch (error) {

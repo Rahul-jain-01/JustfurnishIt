@@ -74,17 +74,17 @@ namespace Account_Service
             var app = builder.Build();
 
             // Enable Swagger for all environments
-            //app.UseSwagger();
-            //app.UseSwaggerUI(options =>
-            //{
-            //    options.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
-            //    options.RoutePrefix = string.Empty; // Swagger at root
-            //});
-            if (app.Environment.IsDevelopment())
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+                options.RoutePrefix = string.Empty; // Swagger at root
+            });
+            //if (app.Environment.IsDevelopment())
+            //{
+            //    app.UseSwagger();
+            //    app.UseSwaggerUI();
+            //}
 
             app.UseHttpsRedirection();
 

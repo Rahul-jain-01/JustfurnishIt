@@ -38,12 +38,19 @@ namespace OtpService
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+                options.RoutePrefix = string.Empty; // Swagger at root
+            });
+            // Configure the HTTP request pipeline.
+            //if (app.Environment.IsDevelopment())
+            //{
+            //    app.UseSwagger();
+            //    app.UseSwaggerUI();
+            //}
 
             app.UseHttpsRedirection();
 

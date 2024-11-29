@@ -1,9 +1,11 @@
 import axios from "axios";
 import { CustomerCreateDTO } from "../Types/CustomerModel";
+const _url=import.meta.env.VITE_BASE_API_URL
+
 
 export const createCustomer = async (customerDTO: CustomerCreateDTO) => {
     try {
-      const response = await axios.post('https://localhost:7000/gateway/Customer', customerDTO, {
+      const response = await axios.post(`${_url}/Customer`, customerDTO, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -16,9 +18,9 @@ export const createCustomer = async (customerDTO: CustomerCreateDTO) => {
   };
 
   export const getWishlistByCustomerId = async (customerId: Number): Promise<any> => {
-    const wishlistResponse = await axios.get(`https://localhost:7000/gateway/WishList/${customerId}`);
+    const wishlistResponse = await axios.get(`${_url}/WishList/${customerId}`);
     return wishlistResponse.data;
 };
 export const deleteWishlistItem = async (customerId: Number, wishListId: string): Promise<void> => {
-  await axios.delete(`https://localhost:7000/gateway/WishList/${customerId}/${wishListId}`);
+  await axios.delete(`${_url}/WishList/${customerId}/${wishListId}`);
 };

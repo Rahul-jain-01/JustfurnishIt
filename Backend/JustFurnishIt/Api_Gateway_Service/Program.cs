@@ -42,12 +42,18 @@ namespace Api_Gateway_Service
             // Build the application (middleware pipeline setup).
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+                options.RoutePrefix = string.Empty; // Swagger at root
+            });
+            // Configure the HTTP request pipeline.
+            //if (app.Environment.IsDevelopment())
+            //{
+            //    app.UseSwagger();
+            //    app.UseSwaggerUI();
+            //}
 
             app.UseHttpsRedirection();
             // Enable authorization middleware to ensure that protected routes are secured and require proper access.

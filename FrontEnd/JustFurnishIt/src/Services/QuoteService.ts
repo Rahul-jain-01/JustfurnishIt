@@ -1,15 +1,16 @@
 import axios from "axios";
 import { Quote } from "../Types/EstimateQuotation";
+const _url=import.meta.env.VITE_BASE_API_URL
 
 
 export const getQuotesByDesignId = async (designId: string | undefined): Promise<any> => {
-    const response = await axios.get(`https://localhost:7000/gateway/Quotes/byDesignId/${designId}`);
+    const response = await axios.get(`${_url}/Quotes/byDesignId/${designId}`);
     return response.data;
 };
 
 export const createQuote = async (quoteData: Quote): Promise<void> => {
     try {
-      const response = await axios.post('https://localhost:7000/gateway/Quotes', quoteData, {
+      const response = await axios.post(`${_url}/Quotes`, quoteData, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -24,7 +25,7 @@ export const createQuote = async (quoteData: Quote): Promise<void> => {
 
   export const updateQuote = async (id:String ,quoteData: Quote): Promise<void> => {
     try {
-      const response = await axios.put(`https://localhost:7000/gateway/Quotes/${id}`, quoteData, {
+      const response = await axios.put(`${_url}/Quotes/${id}`, quoteData, {
         headers: {
           'Content-Type': 'application/json',
         },

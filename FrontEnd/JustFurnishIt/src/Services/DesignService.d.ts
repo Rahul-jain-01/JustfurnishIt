@@ -1,5 +1,5 @@
 import { DesignData, DesignDTO, Design, DesignDataInfo } from "../Types/DesignTypes";
-export declare const API_BASE = "https://localhost:7000/gateway/Design";
+export declare const API_BASE: string;
 export declare const fetchFavorites: (customerId: number) => Promise<any>;
 export declare const fetchDesignsByCategory: (categoryId: number) => Promise<any>;
 export declare const addToFavorites: (customerId: number, designId: number) => Promise<{

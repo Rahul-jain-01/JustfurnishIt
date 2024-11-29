@@ -26,8 +26,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Account_Service\Account_Service.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -1,8 +1,9 @@
 import axios from 'axios';
+const _url=import.meta.env.VITE_BASE_API_URL
 
 // Base URLs for the APIs
-const USER_API_BASE_URL = 'https://localhost:7000/gateway';
-const DESIGNER_API_BASE_URL = 'https://localhost:7000/gateway';
+const USER_API_BASE_URL = _url;
+const DESIGNER_API_BASE_URL = _url;
 
 // Function to get all users
 export const getUsers = async () => {

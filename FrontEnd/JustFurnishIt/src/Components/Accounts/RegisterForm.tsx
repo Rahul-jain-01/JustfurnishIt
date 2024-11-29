@@ -13,6 +13,7 @@ import { createCustomer } from '../../Services/CustomerServices';
 import { CreateDTO } from '../../Types/DesignerTypes';
 import { createDesigner } from '../../Services/DesignerService';
 
+const _url=import.meta.env.VITE_BASE_API_URL
 
 // Validation Schema using Yup
 const SignupSchema = Yup.object().shape({
@@ -75,7 +76,7 @@ const SignupPage: React.FC = () => {
   const handleSendOtp = async (email: string) => {
     try {
       await axios.post(
-        'https://localhost:7002/api/Otp/SendOtp',
+        `${_url}/Otp/SendOtp`,
         JSON.stringify(email),
         {
           headers: { 'Content-Type': 'application/json' },
@@ -94,7 +95,7 @@ const SignupPage: React.FC = () => {
     if (value.length === 6) {
       try {
         const response = await axios.post(
-          'https://localhost:7002/api/Otp/VerifyOtp',
+          `${_url}/Otp/VerifyOtp`,
           JSON.stringify(value),
           {
             headers: { 'Content-Type': 'application/json' },
